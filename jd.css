@@ -1,0 +1,343 @@
+/**
+* @name: jd
+* @author: surui
+* @date: 2020-11-18 20:42
+* @description：jd
+* @update: 2020-11-18 20:42
+*/
+/* 特殊样式 */
+ol,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+*{
+    /* 点击高亮我们需要清除 设置为完全透明 */
+    -webkit-tap-highlight-color:transparent;
+    margin: 0;
+    padding: 0;
+}
+input{
+    /* 在移动端浏览器默认的外观在ios上加上这个属性才能给按钮和输入框自定义样式 */
+    -webkit-appearance:none;
+    outline: none;
+    border: none;
+}
+/* 禁用长按页面时的弹出菜单*/
+img,a{-webkit-touch-callout:none; text-decoration: none;color: #666}
+
+/* jd 主体样式 */
+/* body */
+body{
+    width: 100%;
+    max-width: 640px;
+    min-width: 320px;
+    margin: 0 auto;
+    background-color: #F6F6F6;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+    font-family: -apple-system, Helvetica, sans-serif;
+}
+header{
+    position: fixed;
+    /* 外边距合并 处理*/
+    overflow: hidden;
+    width: 100%;
+    height: 44px;
+    min-width: 320px;
+    max-width: 640px;
+    background-color: #E43130;
+    z-index: 999;
+}
+.search{
+    height: 100%;
+    width: 100%;
+}
+.search_left{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 44px;
+}
+.search_left::before{
+    content: '';
+    display: block;
+    width: 20px;
+    height: 18px;
+    background: url("./images/s-btn.png") no-repeat;
+    background-size: 20px 18px;
+    margin: 14px 0 0 15px;
+}
+.search_right{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 44px;
+    color: white;
+    line-height: 44px;
+}
+.search_content{
+    position: relative;
+    height: 30px;
+    margin: 7px 50px;
+    border-radius: 15px;
+    background-color: #fff;
+}
+.search_content .jd_icon{
+    position: absolute;
+    top: 7px;
+    left: 13px;
+    width: 20px;
+    height: 15px;
+    background: url("images/jd.png") no-repeat;
+    background-size: 20px 15px;
+}
+.search_content .jd_icon::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -8px;
+    width: 1px;
+    height: 15px;
+    background-color: #ebe4e0;
+}
+/* 第二种方法 */
+/*.search_content em {*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    top: 5px;*/
+/*    left: 30px;*/
+/*    width: 10px;*/
+/*    height: 35px;*/
+/*    margin: 0 5px;*/
+/*    font-style: normal;*/
+/*    color: #ebe4e0;*/
+/*}*/
+
+/* 二倍精灵图做法
+先再软件中缩放一半再看位置信息
+再设置精灵图bgsz 宽度一半
+*/
+.search_content .search_icon{
+    position: absolute;
+    top: 8px;
+    left: 50px;
+    display: block;
+    width: 18px;
+    height: 15px;
+    background: url("images/jd-sprites.png") no-repeat -83px 0;
+    background-size: 200px auto;
+}
+.search_content input{
+    position: absolute;
+    top: 0;
+    left: 80px;
+    padding: 0;
+    width: calc(100% - 50px - 18px - 30px);
+    height: 100%;
+}
+
+.banner{
+    position: relative;
+    top: 44px;
+    width: 100%;
+    max-width: 620px;
+    min-width: 300px;
+    overflow: hidden;
+}
+.banner img{
+    width: 100%;
+    height: 100%;
+}
+.banner ul{
+    overflow: hidden;
+    width: 500%;
+    /* 显示第一张 */
+    margin-left: -100%;
+}
+.banner ul li{
+    float: left;
+    width: 20%;
+}
+.banner ol{
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    transition: .3s;
+}
+.banner ol li{
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: skyblue;
+    border-radius: 2px;
+}
+.banner ol li.current{
+    width: 8px;
+}
+
+/* 品牌日 */
+.flsPit{
+    width: 100%;
+    /*height: 1rem;*/
+    background-color: #fff;
+    text-align: center;
+    margin-top: 44px;
+}
+.flsPit div{
+    float: left;
+    width: 33.33%;
+    background-color: #fff;
+}
+.flsPit div img{
+    width: 100%;
+    height: 100%;
+}
+
+
+/* brand */
+.brand{
+    width: 100%;
+    background: url("upload/nav-bg.dpg") no-repeat;
+}
+.brand a{
+    width: 20%;
+    float: left;
+}
+.brand span{
+    display: block;
+    width: 100%;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    font-size: .6rem;
+}
+.brand a img{
+    display: block;
+    width: 40.1px;
+    height: 40.1px;
+    margin: 10px auto;
+}
+
+
+/* recommend */
+.recommend{
+    width: 100%;
+    overflow: hidden;
+}
+.recommend div{
+    width: 24%;
+    float: left;
+    text-align: center;
+    height: 145px;
+    margin-right: .2em;
+    background-color: #fff;
+}
+.recommend div strong{
+    font-size: .8rem;
+    line-height: 1.125rem;
+    font-weight: 700;
+    margin-top: 3em;
+}
+.recommend div p{
+    font-size: .4rem;
+}
+.recommend div:nth-child(1):before,
+.recommend div:nth-child(4):before{
+    content: '';
+    display: block;
+    height: 20px;
+}
+.recommend div img{
+    width: 60.3px;
+    height: 60.3px;
+}
+
+/* 秒杀  */
+.seckill{
+    width: 100%;
+    overflow: hidden;
+    margin: 10px auto;
+}
+.seckill_top{
+    position: relative;
+    width: 100%;
+    height: 34px;
+}
+.seckill_top_l{
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 50%;
+}
+.seckill_top_l em{
+    font-size: 14px;
+}
+.seckill_top_l p{
+    display: inline-block;
+    color: red;
+}
+.seckill_top_r{
+    position: absolute;
+    left: 50%;
+    top: 5px;
+    width: 50%;
+    font-size: 12px;
+    color: red;
+}
+.seckill_top_r p{
+    position: absolute;
+    right: 15px;
+    top: 0;
+}
+.seckill_icon{
+    position: absolute;
+    right: 0;
+    top: 2px;
+    background: url("upload/arrow_rt.png") no-repeat;
+    background-size: 11px 11px;
+    width: 11px;
+    height: 11px;
+}
+
+/* seckill content */
+.seckill_content{
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 1rem;
+}
+.seckill_content ul{
+    width: 1318.33px;
+}
+.seckill_content li{
+    float: left;
+    width: 125.333px;
+    list-style: none;
+    text-align: center;
+}
+.seckill_content li p{
+    font-size: 13px;
+    font-weight: 700;
+}
+.seckill_content li a{
+    display: block;
+}
+.seckill_content li img{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    min-height: 1px;
+    min-width: 1px;
+}
+.seckill_content li p:nth-child(2){
+    color: red;
+}
+.seckill_content li p:nth-child(3){
+    text-decoration: line-through;
+}
