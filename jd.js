@@ -78,10 +78,43 @@ window.addEventListener('load',function () {
         }
     });
 
-    // 封装函数
+    // 封装轮播图函数
     function movepic(count,time) {
         let translatex = -count * w;
         ul.style.transition = time;
         ul.style.transform = 'translateX('+ translatex +'px)';
+    }
+
+    // 返回顶部
+    let goBack = document.querySelector('.goBack');
+    console.log(banner.offsetTop / 2);
+    window.addEventListener('scroll',function () {
+        if (window.pageYOffset >= banner.offsetTop){
+            goBack.style.display = 'inline';
+        }else {
+            goBack.style.display = 'none';
+        }
+    });
+    goBack.addEventListener('click',function () {
+        // 快速返回顶部
+        // window.scroll(0,0);
+
+        // 采用缓动动画来页面滚动
+        animate(window,0);
+    });
+    // 解决移动端 click 延时问题
+    // 封装返回顶部缓动动画函数
+    function  animate(obj,target,callback) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            let step = (target - obj.pageYOffset) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            if (obj.pageYOffset == target){
+                clearInterval(obj.timer);
+                timer = null;
+                callback && callback();
+            }
+            obj.scroll(0,obj.pageYOffset + step);
+        },15)
     }
 });
